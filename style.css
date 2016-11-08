@@ -15,7 +15,7 @@ body {
   max-width: 350px;
   height: 100%;
   max-height: 500px;
-  overflow: scroll;
+  overflow: hidden;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -35,7 +35,7 @@ body {
     font-size: 20px;
     padding: 10px;
     padding-right: 55px;
-    border: 1px solid #00838F;
+    border: 1px solid #7BC6CC;
     font-family: "Muli", sans-serif;
     color: #555; }
   #userInteractions #btn {
@@ -45,7 +45,7 @@ body {
     height: 43px;
     width: 43px;
     color: #fff;
-    background: #0097A7;
+    background: #BE93C5;
     z-index: 2;
     font-size: 20px;
     border: 0; }
@@ -54,11 +54,12 @@ body {
   position: absolute;
   bottom: 45px;
   left: 0px;
-  min-height: calc(100% - 45px);
-  height: auto;
+  height: calc(100% - 45px);
   width: 100%;
   overflow: scroll;
-  background: #0097A7; }
+  background: #7BC6CC;
+  background: -webkit-linear-gradient(to bottom, #BE93C5, #7BC6CC);
+  background: linear-gradient(to bottom, #BE93C5, #7BC6CC); }
   #messagesWindow::-webkit-scrollbar {
     width: 0px; }
   #messagesWindow .right, #messagesWindow .left {
@@ -66,7 +67,7 @@ body {
     border-radius: 25px;
     color: #555;
     display: block;
-    max-width: 80%;
+    max-width: 70%;
     position: relative;
     margin: 10px;
     padding: 10px 20px;
