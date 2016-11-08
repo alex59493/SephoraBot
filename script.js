@@ -1,4 +1,8 @@
 'use strict';
+
+// CONFIG
+var TIMERESPONSE = 2000; // Number of milliseconds that the bot needs to write its message
+ 
 var currentAction = null;
 
 // Get the first action and display it
@@ -7,56 +11,76 @@ $(function() {
     sendToBot(parameters, function(res) {
         // Display greetings
         var i = 0;
-        var greetings = setInterval(function() {
-            if (i === res.currentAction.greetings.length) clearInterval(greetings);
-            else {
+        var interval = setInterval(function() {
+
+            // If all the item in the greetings array are not yet displayed, display the next one
+            if (i !== res.currentAction.greetings.length) {
                 displayMessage("left", res.currentAction.greetings[i]);
                 i += 1;
             }
-        }, 2500);
 
-        // Display first question
-        setTimeout(function() {
-            displayMessage("left", res.nextAction.question);
-        }, 8000);
+            // Else, display the next question
+            else {
+                clearInterval(interval);
+
+                // Display first question
+                displayMessage("left", res.nextAction.question);
+            }
+
+        }, TIMERESPONSE + 500);
 
         currentAction = res.nextAction;
     });
 });
 
 
-$("#btn").click(function() {
+$("#btn").click(sendMessage);
 
+$("#userInput").keypress(function(e) {
+    if (e.which == 13) {
+        sendMessage();
+    }
+});
+
+
+function sendMessage() {
     displayMessage("right", $("#userInput").val()); // Append user input to displayed messages
 
     var parameters = { currentAction: currentAction, userInput: $("#userInput").val() };
     sendToBot(parameters, function(res) {
-
-        // Display answer
-        setTimeout(function() {
-            displayMessage("left", res.currentAction.resp);
-        }, 500);
-
-        // If this is the last question of the flow, show the bye message and close conversation
-        if (res.nextAction.byeMessage) {
-            setTimeout(function() {
-                displayMessage("left", res.nextAction.byeMessage);
-            }, 2500);
-        }
-        else {
-            // Display next question
-            setTimeout(function() {
-                displayMessage("left", res.nextAction.question);
-            }, 2500);
-
-            currentAction = res.nextAction;
-        }
+        displayBotResponse(res);
     });
 
     // Clear textarea
     $("#userInput").val('');
     return true;
-});
+}
+
+
+function displayBotResponse(res) {
+    // Display answer to the current entity
+    setTimeout(function() {
+        displayMessage("left", res.currentAction.resp);
+    }, 500);
+
+    // If this is the last entity of the flow, show the bye message and close conversation
+    if (res.nextAction.byeMessage) {
+        setTimeout(function() {
+            displayMessage("left", res.nextAction.byeMessage);
+        }, TIMERESPONSE + 500);
+
+        currentAction = -1;
+    }
+
+    // Else, display the next question
+    else {
+        setTimeout(function() {
+            displayMessage("left", res.nextAction.question);
+        }, TIMERESPONSE + 500);
+
+        currentAction = res.nextAction;
+    }
+}
 
 
 function sendToBot(parameters, callback) {
@@ -76,15 +100,19 @@ function sendToBot(parameters, callback) {
 
 
 function displayMessage(side, message) {
+    // If the messages emiter is the bot, display the message with the "..." animation
     if (message && side && side === "left") {
         $('#messagesWindow').append('<div class="left"><div class="bye"><span>.</span><span>.</span><span>.</span></div><p>' + message + "</p></div>");
         $('#messagesWindow').scrollTop($('#messagesWindow').get(-1).scrollHeight);
         return true;
     }
+
+    // Else if the message emiter is the user, simply display the message (without "...")
     else if (message && side && side === "right") {
         $('#messagesWindow').append('<div class="right">' + message + "</div>");
         $('#messagesWindow').scrollTop($('#messagesWindow').get(-1).scrollHeight);
         return true;
     }
+
     else return false;
 }
