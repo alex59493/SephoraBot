@@ -1,0 +1,138 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Muli", sans-serif; }
+
+#wrap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden; }
+
+#chatWrap {
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  max-height: 500px;
+  overflow: scroll;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+
+#userInteractions {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 45px;
+  box-sizing: border-box; }
+  #userInteractions #userInput {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    padding: 10px;
+    padding-right: 55px;
+    border: 1px solid #00838F;
+    font-family: "Muli", sans-serif;
+    color: #555; }
+  #userInteractions #btn {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    height: 43px;
+    width: 43px;
+    color: #fff;
+    background: #0097A7;
+    z-index: 2;
+    font-size: 20px;
+    border: 0; }
+
+#messagesWindow {
+  position: absolute;
+  bottom: 45px;
+  left: 0px;
+  min-height: calc(100% - 45px);
+  height: auto;
+  width: 100%;
+  overflow: scroll;
+  background: #0097A7; }
+  #messagesWindow::-webkit-scrollbar {
+    width: 0px; }
+  #messagesWindow .right, #messagesWindow .left {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+    color: #555;
+    display: block;
+    max-width: 80%;
+    position: relative;
+    margin: 10px;
+    padding: 10px 20px;
+    float: right;
+    clear: both;
+    animation-name: bouncein;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-timing-function: easeOut; }
+@keyframes bouncein {
+  0% {
+    transform: scale(0); }
+  80% {
+    transform: scale(1.03); }
+  100% {
+    transform: scale(1); } }
+  #messagesWindow .left {
+    float: left;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px 20px 5px 20px; }
+    #messagesWindow .left p {
+      display: inline;
+      animation-name: fadeIn;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      font-size: 1em;
+      margin: 0px;
+      line-height: 1.5; }
+@keyframes fadeIn {
+  0% {
+    font-size: 0em; }
+  99.99% {
+    font-size: 0em; }
+  100% {
+    font-size: 1em; } }
+    #messagesWindow .left .bye {
+      animation-name: fadeOut;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      font-size: 0em;
+      display: inline; }
+      #messagesWindow .left .bye span {
+        animation-name: bouncing;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        color: rgba(0, 0, 0, 0.6); }
+        #messagesWindow .left .bye span:nth-of-type(2) {
+          animation-delay: 0.5s; }
+        #messagesWindow .left .bye span:nth-of-type(3) {
+          animation-delay: 1s; }
+@keyframes bouncing {
+  0% {
+    margin-top: 0px;
+    opacity: 0; }
+  50% {
+    margin-top: -5px;
+    opacity: 1; }
+  100% {
+    margin-top: 0px;
+    opacity: 0; } }
+@keyframes fadeOut {
+  0% {
+    font-size: 1.2em; }
+  99.99% {
+    font-size: 1.2em; }
+  100% {
+    font-size: 0em; } }
+
+/*# sourceMappingURL=style.css.map */
