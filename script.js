@@ -108,7 +108,7 @@ function displayMessage(side, message) {
         // Otherwise, message with more than one line (like "...") won't be completely shown
         setTimeout(function() {
             $('#messagesWindow').scrollTop($('#messagesWindow').get(-1).scrollHeight);
-        }, TIMERESPONSE);
+        }, TIMERESPONSE + 1);
         return true;
     }
 
