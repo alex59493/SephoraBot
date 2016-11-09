@@ -53,8 +53,9 @@ body {
 #messagesWindow {
   position: absolute;
   bottom: 45px;
-  left: 0px;
-  height: calc(100% - 45px);
+  left: 0;
+  /*min-height:calc(100% - 45px);*/
+  top: 0;
   width: 100%;
   overflow: scroll;
   background: #7BC6CC;

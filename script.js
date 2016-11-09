@@ -104,6 +104,11 @@ function displayMessage(side, message) {
     if (message && side && side === "left") {
         $('#messagesWindow').append('<div class="left"><div class="bye"><span>.</span><span>.</span><span>.</span></div><p>' + message + "</p></div>");
         $('#messagesWindow').scrollTop($('#messagesWindow').get(-1).scrollHeight);
+        // Wait that the message is fully displayed and refresh the scroll
+        // Otherwise, message with more than one line (like "...") won't be completely shown
+        setTimeout(function() {
+            $('#messagesWindow').scrollTop($('#messagesWindow').get(-1).scrollHeight);
+        }, TIMERESPONSE);
         return true;
     }
 
