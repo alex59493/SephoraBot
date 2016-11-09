@@ -92,7 +92,7 @@ body {
     #messagesWindow .left p {
       display: inline;
       animation-name: fadeIn;
-      animation-duration: 2s;
+      animation-duration: 0s;
       animation-iteration-count: 1;
       font-size: 1em;
       margin: 0px;
@@ -104,21 +104,15 @@ body {
     font-size: 0em; }
   100% {
     font-size: 1em; } }
-    #messagesWindow .left .bye {
-      animation-name: fadeOut;
+    #messagesWindow .left .bye span {
+      animation-name: bouncing;
       animation-duration: 2s;
-      animation-iteration-count: 1;
-      font-size: 0em;
-      display: inline; }
-      #messagesWindow .left .bye span {
-        animation-name: bouncing;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-        color: rgba(0, 0, 0, 0.6); }
-        #messagesWindow .left .bye span:nth-of-type(2) {
-          animation-delay: 0.5s; }
-        #messagesWindow .left .bye span:nth-of-type(3) {
-          animation-delay: 1s; }
+      animation-iteration-count: infinite;
+      color: rgba(0, 0, 0, 0.6); }
+      #messagesWindow .left .bye span:nth-of-type(2) {
+        animation-delay: 0.5s; }
+      #messagesWindow .left .bye span:nth-of-type(3) {
+        animation-delay: 1s; }
 @keyframes bouncing {
   0% {
     margin-top: 0px;
@@ -129,12 +123,5 @@ body {
   100% {
     margin-top: 0px;
     opacity: 0; } }
-@keyframes fadeOut {
-  0% {
-    font-size: 1.2em; }
-  99.99% {
-    font-size: 1.2em; }
-  100% {
-    font-size: 0em; } }
 
 /*# sourceMappingURL=style.css.map */

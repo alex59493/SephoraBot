@@ -2,6 +2,7 @@ $white : #fff;
 $purple : #BE93C5;
 $blue : #7BC6CC;
 $black : #555;
+
 $sans : 'Muli', sans-serif;
 
 @mixin centerme(){
@@ -120,68 +121,51 @@ body {
         padding:10px 20px 5px 20px;
 
         p {
-            display:inline;
-            animation-name:fadeIn;
-            animation-duration:2s;
-            animation-iteration-count:1;
-            font-size:1em;
-            margin:0px;
-            line-height:1.5;
-            @keyframes fadeIn{
-                0%{
-                  font-size:0em;
+            display: inline;
+            animation-name: fadeIn;
+            animation-duration: 0s;
+            animation-iteration-count: 1;
+            font-size: 1em;
+            margin: 0px;
+            line-height: 1.5;
+            @keyframes fadeIn {
+                0% {
+                  font-size: 0em;
                 }
-                99.99%{
-                  font-size:0em;
+                99.99% {
+                  font-size: 0em;
                 }
-                100%{
-                  font-size:1em;
+                100% {
+                  font-size: 1em;
                 }
             }
         }
 
         .bye {
-            animation-name:fadeOut;
-            animation-duration:2s;
-            animation-iteration-count:1;
-            font-size:0em;
-            display:inline;
-
             span {
-                animation-name:bouncing;
-                animation-duration:2s;
-                animation-iteration-count:infinite;
-                color:rgba(0,0,0,0.6);
+                animation-name: bouncing;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                color: rgba(0,0,0,0.6);
                 &:nth-of-type(2) {
-                    animation-delay:0.5s;
+                    animation-delay: 0.5s;
                 }
                 &:nth-of-type(3) {
-                    animation-delay:1s;
+                    animation-delay: 1s;
                 }
                 @keyframes bouncing {
                     0% {
-                        margin-top:0px;
-                        opacity:0;
+                        margin-top: 0px;
+                        opacity: 0;
                     }
                     50% {
-                        margin-top:-5px;
-                        opacity:1;
+                        margin-top: -5px;
+                        opacity: 1;
                     }
                     100% {
-                        margin-top:0px;
-                        opacity:0;
+                        margin-top: 0px;
+                        opacity: 0;
                     }
-                }
-            }
-            @keyframes fadeOut {
-                0% {
-                    font-size:1.2em;
-                }
-                99.99% {
-                    font-size:1.2em;
-                }
-                100% {
-                    font-size:0em;
                 }
             }
         }
